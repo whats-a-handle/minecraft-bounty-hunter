@@ -14,7 +14,8 @@ public class BountyHunter extends JavaPlugin  {
 	    	
 	    	dbConnection.authenticate();
 	    	dbConnection.createTable();
-	        
+	    	
+	    	this.getCommand("addBounty").setExecutor(new AddBounty());
 	        this.getCommand("setBounty").setExecutor(new SetBounty());
 			this.getCommand("getBounty").setExecutor(new GetBounty());
 			

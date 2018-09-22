@@ -2,15 +2,29 @@ name: BountyHunter
 main: com.whatsahandle.bountyhunter.BountyHunter
 version: 1.0
 api-version: 1.13
-commands: 
+commands:
+   addBounty:
+      usage: /<command> <player>
+      description: add bounty to a players existing bounty and remove the amount from your holdings
+      permission: bountyhunter.player 
    setBounty:
-      usage: /<command>
+      usage: /<command> <player>
       description: set a bounty on a player
+      permission: bountyhunter.admin
    getBounty:
-      usage: /<command> [player]
+      usage: /<command> <player>
       description: check the bounty of a player
+      permission: bountyhunter.player
    bountyTop:
       usage: /<command>
       description: shows the top 10 players with the highest bounties
-      
+      permission: bountyhunter.player
+permissions:
+   bountyhunter.player:
+      description: permissions to add and check bounties
+      default: true
+   bountyhunter.admin:
+      description: admin permissions for setting and clearing bounties
+      default: op
+   
 softdepend: [TheNewEconomy]

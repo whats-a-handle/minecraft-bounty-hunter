@@ -135,6 +135,20 @@ public class DatabaseConnection {
 		}	
 		return playerId;
 	}
+	
+	public void addPlayerBounty(String playerName, int amount) {
+		
+		try {
+			String queryString = "INSERT INTO " + this.getTableName() + "(id,playerName,bountyAmount) " +
+					"VALUES (" + getIdFromPlayerName(playerName)+ ",\'" + playerName +"\'," + amount +") " +
+							"ON DUPLICATE KEY UPDATE " + "bountyAmount= bountyAmount +" + amount;
+			Statement statement = this.connection.createStatement();
+			statement.execute(queryString);
+		}
+		catch(SQLException error) {
+			System.out.println("ERROR DURING BOUNTY SET: \n" + error);
+		}
+	}
 	public void setPlayerBounty(String playerName, int amount) {
 		
 		try {

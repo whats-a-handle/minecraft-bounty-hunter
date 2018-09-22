@@ -11,19 +11,23 @@ public class GetBounty implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 	
 		if(sender instanceof Player) {
-			String targetPlayerName = args[0]; //check if not null in future
-			int bountyAmount = 0;
-			DatabaseConnection dbConnection = new DatabaseConnection();
-        	dbConnection.authenticate();
-        	dbConnection.createTable();
-        	
-			sender.sendMessage("Getting bounty for " + targetPlayerName);
 			
-			bountyAmount = dbConnection.getPlayerBounty(targetPlayerName);
-			
-			sender.sendMessage(targetPlayerName + " has a bounty of $" + bountyAmount);
-			
-			return true;
+			String targetPlayer = args[0]; //check if not null in future
+			if(BountyValidator.checkIfPlayerExists(targetPlayer)) {
+				int bountyAmount = 0;
+				DatabaseConnection dbConnection = new DatabaseConnection();
+	        	dbConnection.authenticate();
+	        	dbConnection.createTable();
+
+				bountyAmount = dbConnection.getPlayerBounty(targetPlayer);
+				
+				sender.sendMessage(targetPlayer + " has a bounty of $" + bountyAmount);
+				
+				return true;
+			}else {
+				sender.sendMessage("Player " + targetPlayer + " doesn\'t exist");
+			}
+	
 		}
 		
 		
