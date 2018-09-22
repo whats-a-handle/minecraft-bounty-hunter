@@ -1,0 +1,16 @@
+name: BountyHunter
+main: com.whatsahandle.bountyhunter.BountyHunter
+version: 1.0
+api-version: 1.13
+commands: 
+   setBounty:
+      usage: /<command>
+      description: set a bounty on a player
+   getBounty:
+      usage: /<command> [player]
+      description: check the bounty of a player
+   bountyTop:
+      usage: /<command>
+      description: shows the top 10 players with the highest bounties
+      
+softdepend: [TheNewEconomy]
