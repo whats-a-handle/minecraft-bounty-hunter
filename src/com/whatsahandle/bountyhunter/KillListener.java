@@ -32,7 +32,7 @@ public class KillListener  implements Listener
 		int bountyAmount = 0;
 
 		bountyAmount = dbConnection.getPlayerBounty(killedPlayer.getName());
-		Bukkit.broadcastMessage("Murderer!");
+		
 		if(bountyAmount > 0) {
 			
 			
